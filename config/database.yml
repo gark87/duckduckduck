@@ -20,10 +20,10 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  adapter: mysql
-  encoding: utf8
-  database: project_production
-  pool: 5
-  username: 
-  password:
+mysql: &mysql
+  adapter: mysql2
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
+  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
+  host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+  port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
